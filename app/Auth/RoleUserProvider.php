@@ -13,7 +13,7 @@ class RoleUserProvider extends EloquentUserProvider
     public function __construct($hasher, $model, $roleCondition = null)
     {
         parent::__construct($hasher, $model);
-        $this->roleCondition = $roleCondition;
+        $this->roleCondition = $roleCondition;  
     }
 
     public function retrieveByCredentials(array $credentials)

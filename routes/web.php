@@ -6,7 +6,7 @@ use App\Http\Controllers\LogbookController;
 
 // Landing Page
 Route::get('/', [LandingController::class, 'index'])
-    ->name('home'); // Nama route diubah menjadi 'home' untuk kompatibilitas
+    ->name('home');
 
 // Asisten Laboratorium Routes
 Route::prefix('asisten-laboratorium')->group(function () {
@@ -29,6 +29,11 @@ Route::controller(\App\Http\Controllers\PrestasiKegiatanController::class)
         Route::get('/{prestasiKegiatan}', 'show')->name('show');
     });
 
+// Kolaborator route
+Route::get('/kolaborator', [LandingController::class, 'kolaborator'])
+    ->name('kolaborator');
+
+    
 // Logbook
 Route::get('/recent-logbook', [LogbookController::class, 'getRecentLogbook'])->name('logbook.recent');
 
@@ -36,5 +41,15 @@ Route::get('/recent-logbook', [LogbookController::class, 'getRecentLogbook'])->n
 Route::get('/alumni', [\App\Http\Controllers\AlumniStoryController::class, 'index'])
     ->name('public.alumni.index');
 
-// Kolaborator route
-Route::get('/kolaborator', [LandingController::class, 'kolaborator'])->name('kolaborator');
+// Filament Panel POST Routes untuk Login
+Route::post('admin/login', [\Filament\Pages\Auth\Login::class, 'authenticate'])
+    ->middleware(['web'])
+    ->name('filament.admin.auth.login.post');
+
+Route::post('asisten/login', [\Filament\Pages\Auth\Login::class, 'authenticate'])
+    ->middleware(['web'])
+    ->name('filament.asisten.auth.login.post');
+
+Route::post('anggota/login', [\Filament\Pages\Auth\Login::class, 'authenticate'])
+    ->middleware(['web'])
+    ->name('filament.anggota.auth.login.post');

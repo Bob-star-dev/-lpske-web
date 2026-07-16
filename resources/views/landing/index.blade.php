@@ -6,20 +6,20 @@
         <div class="container py-5">
             <div class="row align-items-center justify-content-between flex-column-reverse flex-lg-row">
                 <div class="col-lg-6 text-center text-lg-start">
-                    <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown" style="letter-spacing: -1px;">
+                    <h1 class="display-3 fw-bold mb-4 animate_animated animate_fadeInDown" style="letter-spacing: -1px;">
                         Selamat Datang di <span class="text-primary">LPSKE</span>
                     </h1>
-                    <p class="lead mb-4 animate__animated animate__fadeInUp" style="max-width: 500px;">
+                    <p class="lead mb-4 animate_animated animate_fadeInUp" style="max-width: 500px;">
                         Laboratorium Perancangan Sistem Kerja dan Ergonomi (LPSKE) merupakan salah satu laboratorium unggulan di Jurusan Teknik Industri Universitas Sebelas Maret.
                     </p>
-                    <div class="d-flex flex-wrap gap-3 animate__animated animate__fadeInUp">
+                    <div class="d-flex flex-wrap gap-3 animate_animated animate_fadeInUp">
                         <a href="#about" class="btn btn-gradient btn-lg shadow px-4 py-2" style="background: linear-gradient(90deg, #007bff 0%, #00c6ff 100%); color: #fff; border: none;">
                             <i class="fas fa-info-circle me-2"></i> Tentang Kami
                         </a>
                         
                     </div>
                 </div>
-                <div class="col-lg-5 mb-5 mb-lg-0 text-center animate__animated animate__zoomIn">
+                <div class="col-lg-5 mb-5 mb-lg-0 text-center animate_animated animate_zoomIn">
                     <div class="hero-img-wrapper position-relative">
                         <img src="{{ asset('images/title_lpske.png') }}" alt="LPSKE Hero Image" class="img-fluid rounded-4 shadow-lg" style="max-height: 350px; object-fit: contain;">
                         <div class="position-absolute top-0 end-0 translate-middle badge rounded-pill bg-primary shadow" style="font-size: 1rem; padding: 0.75em 1.5em;">

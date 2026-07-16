@@ -6,6 +6,10 @@
     <title>LPSKE - Laboratorium Perancangan Sistem Kerja dan Ergonomi</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    {{-- Livewire Styles --}}
+    @livewireStyles
+
     <style>
         :root {
             --primary-color: rgba(82, 103, 132, 1);
@@ -196,11 +200,23 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('home') }}#home">Beranda</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('asisten-laboratorium') }}">Tim Laboratorium</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="asistenDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Asisten Laboratorium
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="asistenDropdown">
+                            <li><a class="dropdown-item" href="{{ route('asisten-laboratorium') }}">Semua Asisten</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{{ route('asisten-laboratorium', ['angkatan' => 2020]) }}">Angkatan 2020</a></li>
+                            <li><a class="dropdown-item" href="{{ route('asisten-laboratorium', ['angkatan' => 2019]) }}">Angkatan 2019</a></li>
+                            <li><a class="dropdown-item" href="{{ route('asisten-laboratorium', ['angkatan' => 2018]) }}">Angkatan 2018</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{{ route('kepala-laboratorium') }}">Kepala Laboratorium</a></li>
+                            <li><a class="dropdown-item" href="{{ route('dosen-laboratorium') }}">Dosen Laboratorium</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('prestasi-kegiatan.index') }}">Dokumentasi</a>
+                        <a class="nav-link" href="{{ route('prestasi-kegiatan.index') }}">Prestasi & Kegiatan</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('public.alumni.index') }}">Alumni</a>
@@ -236,19 +252,19 @@
                 <div class="col-md-4">
                     <h5>Kontak Kami</h5>
                     <p class="contact-info">
-                        <a href="https://www.google.com/maps/search/?api=1&query=Jl.+Ir.+Sutami+36A,+Surakarta" target="_blank" class="text-decoration-none text-white">
+                        <a href="https://www.google.com/search?sca_esv=7a35ca30b0eec527&cs=1&output=search&tbm=lcl&kgmid=%2Fg%2F11ghq3_0tj&q=Gedung%203%20Fakultas%20Teknik%20UNS&shndl=30&shem=lcuae%2Csdl1p%2Cuaasie&source=sh%2Fx%2Floc%2Funi%2Fm1%2F1&kgs=6007564504d98bb0#rlfi=hd:;si:;mv:[[-7.558102942500253,110.84703905771357],[-7.564037597432735,110.83718995692266]]" target="_blank" class="text-decoration-none text-white">
                             <i class="fas fa-map-marker-alt me-2"></i> Jl. Ir. Sutami 36A, Surakarta
                         </a><br>
-                        <a href="https://wa.me/#" target="_blank" class="text-decoration-none text-white">
-                            <i class="fab fa-whatsapp me-2"></i> 082336422422
+                        <a href="tel:0271-646994" target="_blank" class="text-decoration-none text-white">
+                            <i class="fab fa-whatsapp me-2"></i> 0271-646994
                         </a><br>
-                        <a href="https://www.instagram.com/lpske_tiuns/" class="text-decoration-none text-white">
-                            <i class="fas fa-envelope me-2"></i> lpske_tiuns
+                        <a href="mailto:lpske.ft.uns.ac.id" class="text-decoration-none text-white">
+                            <i class="fas fa-envelope me-2"></i> lpske.ft.uns.ac.id
                         </a>
                     </p>
                     <div class="social-links mt-3">
                         <a href="https://www.instagram.com/lpske_tiuns/" class="text-decoration-none"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.youtube.com/@chairulumamachmad5292" class="text-decoration-none"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.youtube.com/@lpske_tiuns" class="text-decoration-none"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
@@ -260,6 +276,10 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    {{-- Livewire Scripts --}}
+    @livewireScripts
+
     @stack('scripts')
     @stack('modals')
 </body>

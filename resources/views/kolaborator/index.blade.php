@@ -132,28 +132,30 @@
             </div>
             
             
-            <!-- Designer Tab -->
-            <div class="tab-pane fade" 
-                 id="enuma" 
-                 role="tabpanel" 
-                 aria-labelledby="enuma-tab">
-                <div class="row g-4">
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card h-100 shadow-sm hover-shadow transition-all">
-                            <div class="card-body text-center">
-                                <div class="mb-3">
-                                    <div class="rounded-circle bg-warning bg-gradient d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
-                                        <i class="fas fa-palette text-white" style="font-size: 2rem;"></i>
-                                    </div>
-                                </div>
-                                <h5 class="card-title">Nama Designer 1</h5>
-                                <p class="text-muted mb-2">UI/UX Designer</p>
-                               
-                            </div>
-                        </div>
+           <!-- Designer Tab -->
+<div class="tab-pane fade" 
+     id="enuma" 
+     role="tabpanel" 
+     aria-labelledby="enuma-tab">
+    <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm hover-shadow transition-all">
+                <div class="card-body text-center">
+                    <div class="mb-3">
+                        <!-- Foto profil -->
+                        <img src="{{ asset('images/pakAndre.jpeg') }}" 
+                             alt="Foto saya" 
+                             class="rounded-circle" 
+                             style="width: 80px; height: 80px; object-fit: cover;">
                     </div>
+                    <h5 class="card-title">Andreas Wegiq Adia Hendix</h5>
+                    <p class="text-muted mb-2">Pimpinan Industri Enuma Technology</p>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
             
             <!-- Supervisor Tab -->
             <div class="tab-pane fade" 
@@ -165,28 +167,129 @@
                         <div class="card h-100 shadow-sm hover-shadow transition-all">
                             <div class="card-body text-center">
                                 <div class="mb-3">
-                                    <div class="rounded-circle bg-info bg-gradient d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
-                                        <i class="fas fa-user-tie text-white" style="font-size: 2rem;"></i>
+                                    <div class="rounded-circle bg-info bg-gradient d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px; font-size: 2rem; color: #fff; font-weight: bold;">
+                                        I
                                     </div>
                                 </div>
-                                <h5 class="card-title">Nama Supervisor 1</h5>
-                                <p class="text-muted mb-2">Project Supervisor</p>
-                              
+                                <h5 class="card-title">Immanuel</h5>
+                                <p class="text-muted mb-2">Asisten Lab Lpske</p>
                             </div>
                         </div>
                     </div>
-                    
                     <div class="col-md-6 col-lg-4">
                         <div class="card h-100 shadow-sm hover-shadow transition-all">
                             <div class="card-body text-center">
                                 <div class="mb-3">
-                                    <div class="rounded-circle bg-secondary bg-gradient d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
-                                        <i class="fas fa-chalkboard-teacher text-white" style="font-size: 2rem;"></i>
+                                    <div class="rounded-circle bg-primary bg-gradient d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px; font-size: 2rem; color: #fff; font-weight: bold;">
+                                        S
                                     </div>
                                 </div>
-                                <h5 class="card-title">Nama Supervisor 2</h5>
-                                <p class="text-muted mb-2">Technical Advisor</p>
-                               
+                                <h5 class="card-title">Sheggy</h5>
+                                <p class="text-muted mb-2">Asisten Lab Lpske</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm hover-shadow transition-all">
+                            <div class="card-body text-center">
+                                <div class="mb-3">
+                                    <div class="rounded-circle bg-success bg-gradient d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px; font-size: 2rem; color: #fff; font-weight: bold;">
+                                        D
+                                    </div>
+                                </div>
+                                <h5 class="card-title">Dzaki</h5>
+                                <p class="text-muted mb-2">Asisten Lab Lpske</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm hover-shadow transition-all">
+                            <div class="card-body text-center">
+                                <div class="mb-3">
+                                    <div class="rounded-circle bg-warning bg-gradient d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px; font-size: 2rem; color: #fff; font-weight: bold;">
+                                        K
+                                    </div>
+                                </div>
+                                <h5 class="card-title">Kezia</h5>
+                                <p class="text-muted mb-2">Asisten Lab Lpske</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm hover-shadow transition-all">
+                            <div class="card-body text-center">
+                                <div class="mb-3">
+                                    <div class="rounded-circle bg-danger bg-gradient d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px; font-size: 2rem; color: #fff; font-weight: bold;">
+                                        C
+                                    </div>
+                                </div>
+                                <h5 class="card-title">Citta</h5>
+                                <p class="text-muted mb-2">Asisten Lab Lpske</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm hover-shadow transition-all">
+                            <div class="card-body text-center">
+                                <div class="mb-3">
+                                    <div class="rounded-circle bg-info bg-gradient d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px; font-size: 2rem; color: #fff; font-weight: bold;">
+                                        E
+                                    </div>
+                                </div>
+                                <h5 class="card-title">El Qonita</h5>
+                                <p class="text-muted mb-2">Asisten Lab Lpske</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm hover-shadow transition-all">
+                            <div class="card-body text-center">
+                                <div class="mb-3">
+                                    <div class="rounded-circle bg-primary bg-gradient d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px; font-size: 2rem; color: #fff; font-weight: bold;">
+                                        N
+                                    </div>
+                                </div>
+                                <h5 class="card-title">Nita</h5>
+                                <p class="text-muted mb-2">Asisten Lab Lpske</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm hover-shadow transition-all">
+                            <div class="card-body text-center">
+                                <div class="mb-3">
+                                    <div class="rounded-circle bg-success bg-gradient d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px; font-size: 2rem; color: #fff; font-weight: bold;">
+                                        Z
+                                    </div>
+                                </div>
+                                <h5 class="card-title">Zarith</h5>
+                                <p class="text-muted mb-2">Asisten Lab Lpske</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm hover-shadow transition-all">
+                            <div class="card-body text-center">
+                                <div class="mb-3">
+                                    <div class="rounded-circle bg-danger bg-gradient d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px; font-size: 2rem; color: #fff; font-weight: bold;">
+                                        H
+                                    </div>
+                                </div>
+                                <h5 class="card-title">Haris</h5>
+                                <p class="text-muted mb-2">Asisten Lab Lpske</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm hover-shadow transition-all">
+                            <div class="card-body text-center">
+                                <div class="mb-3">
+                                    <div class="rounded-circle bg-warning bg-gradient d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px; font-size: 2rem; color: #fff; font-weight: bold;">
+                                        R
+                                    </div>
+                                </div>
+                                <h5 class="card-title">Rafa</h5>
+                                <p class="text-muted mb-2">Asisten Lab Lpske</p>
                             </div>
                         </div>
                     </div>
@@ -208,30 +311,14 @@
                                         <i class="fas fa-user-tie text-white" style="font-size: 2rem;"></i>
                                     </div>
                                 </div>
-                                <h5 class="card-title">Nama Supervisor 1</h5>
-                                <p class="text-muted mb-2">Project Supervisor</p>
+                                <h5 class="card-title">Rozin</h5>
+                                <p class="text-muted mb-2">Pimpinan Mersiflab</p>
                              
                             </div>
                         </div>
                     </div>
                     
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card h-100 shadow-sm hover-shadow transition-all">
-                            <div class="card-body text-center">
-                                <div class="mb-3">
-                                    <div class="rounded-circle bg-secondary bg-gradient d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
-                                        <i class="fas fa-chalkboard-teacher text-white" style="font-size: 2rem;"></i>
-                                    </div>
-                                </div>
-                                <h5 class="card-title">Nama Supervisor 2</h5>
-                                <p class="text-muted mb-2">Technical Advisor</p>
-                              
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                   
         
         <!-- Thank You Section -->
         <div class="mt-5 p-4 bg-light rounded-4">
