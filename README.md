@@ -26,6 +26,39 @@ logbook, presensi, dan perizinan.
 
 ---
 
+## Menyiapkan Framework Laravel (tools yang harus dipasang)
+
+Project ini **sudah berupa aplikasi Laravel jadi** — kamu **tidak perlu** menjalankan
+`laravel new` atau menginstall Laravel dari nol. Framework Laravel-nya akan ikut terpasang
+otomatis saat menjalankan `composer install` (langkah 1 di bawah). Yang perlu kamu pasang di
+komputer hanyalah **4 tools pendukung** berikut:
+
+| Tools | Fungsi | Cara memasang di Windows |
+|---|---|---|
+| **PHP 8.2+** | Bahasa pemrograman Laravel | Sudah ada di XAMPP (`C:\xampp\php`). Cukup tambahkan `C:\xampp\php` ke **Environment Variables → Path** agar perintah `php` dikenali di CMD |
+| **Composer** | Manajer paket PHP (mengunduh Laravel & Filament) | Unduh installer di [getcomposer.org](https://getcomposer.org/download/) → jalankan → arahkan ke `C:\xampp\php\php.exe` saat diminta |
+| **Node.js + npm** | Membangun tampilan (CSS/JS lewat Vite & Tailwind) | Unduh installer LTS di [nodejs.org](https://nodejs.org/) → install seperti biasa |
+| **XAMPP** | Menyediakan **MySQL** (database) & PHP | Unduh di [apachefriends.org](https://www.apachefriends.org/) → install ke `C:\xampp` |
+
+**Cek semua tools sudah terpasang** (jalankan di CMD, harus muncul nomor versi):
+
+```bat
+php --version
+composer --version
+node --version
+npm --version
+```
+
+Kalau `php` atau `composer` tidak dikenali, artinya PATH belum diatur — lihat kolom
+"Cara memasang" di tabel atas.
+
+> **Apa itu framework Laravel di sini?** Laravel adalah kerangka kerja (framework) PHP yang jadi
+> fondasi aplikasi ini. Semua kode framework berada di folder `vendor/` yang **dibuat oleh
+> Composer**, bukan dikirim bersama project. Karena itu langkah `composer install` wajib
+> dijalankan sebelum aplikasi bisa berjalan.
+
+---
+
 ## Cara Setup Project (untuk penerima project / dari nol)
 
 Ikuti langkah ini **berurutan**. Semua perintah dijalankan dari dalam folder project
@@ -234,6 +267,58 @@ Panel khusus anggota. Fitur:
 - **Peminjaman Saya** — mengajukan & memantau peminjaman alat/barang
 - **Peminjaman Lab** — mengajukan peminjaman ruang/lab
 - **Perizinan** — mengajukan perizinan
+
+---
+
+## Alur Data — Data Web Dikirim ke Tabel Mana
+
+Bagian ini menjelaskan, saat pengguna mengisi/menyimpan sesuatu di web, datanya masuk ke
+**tabel database yang mana**. Setiap fitur terhubung ke satu model Laravel (di `app/Models/`)
+yang menunjuk ke satu tabel di database `lpske`.
+
+### Ringkasan fitur → tabel
+
+| Fitur / Form di web | Diakses dari | Model | Tabel database |
+|---|---|---|---|
+| Login (semua panel) | `/admin`, `/asisten`, `/anggota` | `User` | **`users`** |
+| Kelola Akun (Asisten & Anggota) | Panel Admin | `User` | **`users`** |
+| Tim (kepala lab, dosen, asisten, dll) | Panel Admin | `Team` | **`teams`** |
+| Prestasi & Kegiatan | Panel Admin | `PrestasiKegiatan` | **`prestasi_kegiatan`** |
+| Alumni Story | Panel Admin | `AlumniStory` | **`alumni_story`** |
+| Alat & Barang (inventaris) | Panel Admin | `InventoryItem` | **`inventory_items`** |
+| Peminjaman alat/barang | Panel Admin & Anggota | `Peminjaman` | **`peminjaman`** |
+| Peminjaman Lab (ruang) | Panel Admin & Anggota | `PeminjamanLab` | **`peminjaman_lab`** |
+| Logbook | Panel Admin & Asisten | `Logbook` | **`logbooks`** |
+| Presensi | Panel Admin & Asisten | `Presensi` | **`presensis`** |
+| Perizinan | Panel Admin & Anggota | `Perizinan` | **`perizinans`** |
+
+### Kolom utama tiap tabel (data yang disimpan)
+
+- **`users`** — akun login: `name`, `email`, `password`, `role` (`admin`/`asisten`/`anggota`)
+- **`teams`** — anggota tim di website: `type`, `name`, `nip`, `nim`, `position`, `study_program`, `expertise`, `email`, `phone`, `photo`, `angkatan`, `bio`, `sort_order`, `is_active`
+- **`prestasi_kegiatan`** — dokumentasi: `judul`, `deskripsi`, `gambar`, `video_url`, `jenis`, `tanggal`, `is_video`, `is_featured`, `is_active`, `sort_order`
+- **`alumni_story`** — cerita alumni: `deskripsi`, `foto`, `angkatan`, `is_active`, `user_id`
+- **`inventory_items`** — data alat/barang: `nama_barang`, `jumlah`, `jumlah_tersedia`, `kondisi`, `keterangan`
+- **`peminjaman`** — peminjaman barang: `inventory_item_id`, `peminjam_id`, `jumlah`, `tanggal_pinjam`, `tanggal_kembali`, `tanggal_pengembalian`, `alasan_pinjam`, `catatan_admin`, `status`
+- **`peminjaman_lab`** — peminjaman ruang lab: `user_id`, `lab`, `tanggal_pinjam`, `tanggal_selesai`, `tujuan`, `status`, `catatan_admin`, `disetujui_oleh`, `disetujui_pada`
+- **`logbooks`** — catatan kegiatan asisten: `activity`, `description`, `date`, `asisten_id`
+- **`presensis`** — presensi asisten: `activity`, `description`, `date`, `time`, `asisten_id`
+- **`perizinans`** — pengajuan izin anggota: `user_id`, `jenis_izin`, `tanggal_mulai`, `tanggal_selesai`, `deskripsi`
+
+### Keterkaitan antar tabel (relasi)
+
+Beberapa tabel saling terhubung lewat kolom `*_id` (foreign key):
+
+- `peminjaman.peminjam_id` → mengarah ke **`users.id`** (siapa yang meminjam)
+- `peminjaman.inventory_item_id` → mengarah ke **`inventory_items.id`** (barang yang dipinjam)
+- `peminjaman_lab.user_id` → mengarah ke **`users.id`** (siapa yang memesan lab)
+- `perizinans.user_id` → mengarah ke **`users.id`** (siapa yang mengajukan izin)
+- `logbooks.asisten_id` & `presensis.asisten_id` → mengarah ke **`users.id`** (asisten terkait)
+- `alumni_story.user_id` → mengarah ke **`users.id`**
+
+> Tabel lain yang ada di database (`cache`, `sessions`, `jobs`, `migrations`,
+> `password_reset_tokens`, `permissions`, `roles`, dll) adalah **tabel bawaan Laravel**
+> untuk keperluan sistem (cache, sesi login, antrian, dsb), bukan tempat data isian dari form.
 
 ---
 
