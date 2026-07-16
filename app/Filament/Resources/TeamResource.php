@@ -93,11 +93,11 @@ class TeamResource extends Resource
                                 Section::make('Foto Profil')
                                     ->schema([
                                         FileUpload::make('photo')
-                                            ->label('Foto')
+                                            ->label('Foto Profil')
                                             ->image()
                                             ->directory('teams')
                                             ->imageEditor()
-                                            ->required()
+                                            ->imagePreviewHeight('250')
                                             ->getUploadedFileNameForStorageUsing(
                                                 function (TemporaryUploadedFile $file): string {
                                                     $extension = $file->getClientOriginalExtension();
@@ -105,6 +105,8 @@ class TeamResource extends Resource
                                                     return $filename;
                                                 }
                                             )
+                                            ->hint('Kosongkan jika tidak ingin mengubah foto')
+                                            ->hintIcon('heroicon-o-information-circle')
                                     ]),
                                 Section::make('Tentang')
                                     ->schema([

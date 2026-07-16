@@ -240,7 +240,7 @@
                             <i class="fas fa-map-marker-alt me-2"></i> Jl. Ir. Sutami 36A, Surakarta
                         </a><br>
                         <a href="https://wa.me/#" target="_blank" class="text-decoration-none text-white">
-                            <i class="fab fa-whatsapp me-2"></i> 0888 8888 8888
+                            <i class="fab fa-whatsapp me-2"></i> 082336422422
                         </a><br>
                         <a href="https://www.instagram.com/lpske_tiuns/" class="text-decoration-none text-white">
                             <i class="fas fa-envelope me-2"></i> lpske_tiuns

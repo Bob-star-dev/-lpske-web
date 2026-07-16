@@ -65,37 +65,72 @@
                  role="tabpanel" 
                  aria-labelledby="smk2-tab">
                 <div class="row g-4">
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card h-100 shadow-sm hover-shadow transition-all">
-                            <div class="card-body text-center">
-                                <div class="mb-3">
-                                    <div class="rounded-circle bg-primary bg-gradient d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
-                                        <i class="fas fa-code text-white" style="font-size: 2rem;"></i>
-                                    </div>
-                                </div>
-                                <h5 class="card-title">Nama Developer 1</h5>
-                                <p class="text-muted mb-2">Full Stack Developer</p>
-                                
+                <div class="col-md-6 col-lg-4">
+    <div class="card h-100 shadow-sm hover-shadow transition-all">
+        <div class="card-body text-center">
+            <div class="mb-3">
+                <img src="{{ asset('images/fael.jpeg') }}" alt="Foto Saya" class="rounded-circle" style="width: 80px; height: 80px; object-fit: cover;">
+            </div>
+                                <h5 class="card-title">Zafael Felix Putra Kurniawan</h5>
+                                <p class="text-muted mb-2">Kelas 12 PPLG B/SMK N 2 Surakarta</p>
+                                <p>2025/2026</p>
                             </div>
                         </div>
                     </div>
                     
                     <div class="col-md-6 col-lg-4">
-                        <div class="card h-100 shadow-sm hover-shadow transition-all">
-                            <div class="card-body text-center">
-                                <div class="mb-3">
-                                    <div class="rounded-circle bg-success bg-gradient d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
-                                        <i class="fas fa-laptop-code text-white" style="font-size: 2rem;"></i>
-                                    </div>
-                                </div>
-                                <h5 class="card-title">Nama Developer 2</h5>
-                                <p class="text-muted mb-2">Frontend Developer</p>
+                    <div class="card h-100 shadow-sm hover-shadow transition-all">
+        <div class="card-body text-center">
+            <div class="mb-3">
+                <img src="{{ asset('images/rayhan.jpeg') }}" alt="Foto Saya" class="rounded-circle" style="width: 80px; height: 80px; object-fit: cover;">
+            </div>
+                                <h5 class="card-title">Rayhan Hafidz Adrian</h5>
+                                <p class="text-muted mb-2">Kelas 12 PPLG B/SMK N 2 Surakarta</p>
+                                <p>2025/2026</p>
                                 
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-6 col-lg-4">
+    <div class="card h-100 shadow-sm hover-shadow transition-all">
+        <div class="card-body text-center">
+            <div class="mb-3">
+                <img src="{{ asset('images/eyud.jpeg') }}" alt="Foto Saya" class="rounded-circle" style="width: 80px; height: 80px; object-fit: cover;">
+            </div>
+                                <h5 class="card-title">Philipus Radittya Tri Rudianto</h5>
+                                <p class="text-muted mb-2">Kelas 12 PPLG B/SMK N 2 Surakarta</p>
+                                <p>2025/2026</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+    <div class="card h-100 shadow-sm hover-shadow transition-all">
+        <div class="card-body text-center">
+            <div class="mb-3">
+                <img src="{{ asset('images/bobby.jpeg') }}" alt="Foto Saya" class="rounded-circle" style="width: 80px; height: 80px; object-fit: cover;">
+            </div>
+                                <h5 class="card-title">Ganendra Boby Enza Anshori</h5>
+                                <p class="text-muted mb-2">Kelas 12 PPLG A/SMK N 2 Surakarta</p>
+                                <p>2025/2026</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+    <div class="card h-100 shadow-sm hover-shadow transition-all">
+        <div class="card-body text-center">
+            <div class="mb-3">
+                <img src="{{ asset('images/bagas.jpg') }}" alt="Foto Saya" class="rounded-circle" style="width: 80px; height: 80px; object-fit: cover;">
+            </div>
+                                <h5 class="card-title"> Angga Bagas Pratama</h5>
+                                <p class="text-muted mb-2">Kelas 12 PPLG B/SMK N 2 Surakarta</p>
+                                <p>2025/2026</p>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
+            
             
             <!-- Designer Tab -->
             <div class="tab-pane fade" 
@@ -113,15 +148,7 @@
                                 </div>
                                 <h5 class="card-title">Nama Designer 1</h5>
                                 <p class="text-muted mb-2">UI/UX Designer</p>
-                                <p class="card-text small">Merancang antarmuka dan pengalaman pengguna yang menarik dan intuitif</p>
-                                <div class="d-flex justify-content-center gap-2">
-                                    <a href="#" class="btn btn-outline-warning btn-sm">
-                                        <i class="fab fa-behance"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-outline-warning btn-sm">
-                                        <i class="fab fa-dribbble"></i>
-                                    </a>
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
@@ -144,15 +171,7 @@
                                 </div>
                                 <h5 class="card-title">Nama Supervisor 1</h5>
                                 <p class="text-muted mb-2">Project Supervisor</p>
-                                <p class="card-text small">Mengawasi dan memberikan arahan dalam pengembangan proyek website LPSKE</p>
-                                <div class="d-flex justify-content-center gap-2">
-                                    <a href="#" class="btn btn-outline-info btn-sm">
-                                        <i class="fas fa-envelope"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-outline-info btn-sm">
-                                        <i class="fab fa-linkedin"></i>
-                                    </a>
-                                </div>
+                              
                             </div>
                         </div>
                     </div>
@@ -167,15 +186,7 @@
                                 </div>
                                 <h5 class="card-title">Nama Supervisor 2</h5>
                                 <p class="text-muted mb-2">Technical Advisor</p>
-                                <p class="card-text small">Memberikan konsultasi teknis dan panduan pengembangan sistem</p>
-                                <div class="d-flex justify-content-center gap-2">
-                                    <a href="#" class="btn btn-outline-secondary btn-sm">
-                                        <i class="fas fa-envelope"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-outline-secondary btn-sm">
-                                        <i class="fab fa-linkedin"></i>
-                                    </a>
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
@@ -199,15 +210,7 @@
                                 </div>
                                 <h5 class="card-title">Nama Supervisor 1</h5>
                                 <p class="text-muted mb-2">Project Supervisor</p>
-                                <p class="card-text small">Mengawasi dan memberikan arahan dalam pengembangan proyek website LPSKE</p>
-                                <div class="d-flex justify-content-center gap-2">
-                                    <a href="#" class="btn btn-outline-info btn-sm">
-                                        <i class="fas fa-envelope"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-outline-info btn-sm">
-                                        <i class="fab fa-linkedin"></i>
-                                    </a>
-                                </div>
+                             
                             </div>
                         </div>
                     </div>
@@ -222,15 +225,7 @@
                                 </div>
                                 <h5 class="card-title">Nama Supervisor 2</h5>
                                 <p class="text-muted mb-2">Technical Advisor</p>
-                                <p class="card-text small">Memberikan konsultasi teknis dan panduan pengembangan sistem</p>
-                                <div class="d-flex justify-content-center gap-2">
-                                    <a href="#" class="btn btn-outline-secondary btn-sm">
-                                        <i class="fas fa-envelope"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-outline-secondary btn-sm">
-                                        <i class="fab fa-linkedin"></i>
-                                    </a>
-                                </div>
+                              
                             </div>
                         </div>
                     </div>
