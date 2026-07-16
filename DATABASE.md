@@ -1,83 +1,86 @@
-# Panduan Setup Database (XAMPP di Linux)
+# Panduan Setup Database (XAMPP di Windows)
 
-Dokumen ini menjelaskan cara menyiapkan database **`lpske`** menggunakan **XAMPP for Linux**
-(terpasang di `/opt/lampp`). File SQL siap impor tersedia di **`database/sql/lpske.sql`**.
+Dokumen ini menjelaskan cara menyiapkan database **`lpske`** menggunakan **XAMPP for Windows**
+(umumnya terpasang di `C:\xampp`). File SQL siap impor tersedia di **`database\sql\lpske.sql`**.
+
+Semua perintah dijalankan lewat **Command Prompt (CMD)** atau **PowerShell**. Kalau lebih suka
+tampilan grafis, gunakan cara **phpMyAdmin** di bawah.
 
 ---
 
-## 1. Jalankan MySQL/MariaDB
+## 1. Jalankan MySQL lewat XAMPP Control Panel
 
-XAMPP versi Linux tidak punya control panel grafis; jalankan lewat terminal:
+1. Buka **XAMPP Control Panel** (`C:\xampp\xampp-control.exe`) — bisa juga dari Start Menu.
+2. Klik tombol **Start** pada baris **MySQL**.
+   - Kalau mau memakai phpMyAdmin, klik **Start** juga pada baris **Apache**.
+3. Kalau tombol berubah hijau dan muncul nomor **Port(s)** (biasanya `3306`), berarti MySQL sudah jalan.
 
-```bash
-# Jalankan hanya MySQL
-sudo /opt/lampp/lampp startmysql
+Cek port MySQL yang aktif lewat CMD:
 
-# atau jalankan semua service (Apache + MySQL + ProFTPD)
-sudo /opt/lampp/lampp start
-```
-
-Cek MySQL sudah berjalan dan lihat port-nya (umumnya **3306**):
-
-```bash
-ss -ltnp | grep 3306
+```bat
+netstat -ano | findstr 3306
 ```
 
 > **Penting soal port:** nilai `DB_PORT` di file `.env` **harus sama** dengan port MySQL yang
-> aktif di atas. Jika MySQL kamu jalan di 3306, maka `.env` harus `DB_PORT=3306`.
+> aktif. XAMPP standar memakai **3306**, jadi `.env` harus `DB_PORT=3306`.
 
 ---
 
 ## 2. Impor database `lpske`
 
-File `database/sql/lpske.sql` sudah berisi perintah `CREATE DATABASE` + seluruh tabel + data
-(termasuk akun login). Cukup jalankan:
+File `database\sql\lpske.sql` sudah berisi perintah `CREATE DATABASE` + seluruh tabel + data
+(termasuk akun login). Pilih salah satu cara di bawah.
 
-```bash
-/opt/lampp/bin/mysql -u root < database/sql/lpske.sql
+### Cara A — lewat CMD (paling cepat)
+
+Buka CMD, masuk ke folder project (yang berisi file `artisan`), lalu jalankan:
+
+```bat
+C:\xampp\mysql\bin\mysql.exe -u root < database\sql\lpske.sql
 ```
 
-Jika user root MySQL kamu memakai password, tambahkan `-p`:
+Kalau user root MySQL kamu memakai password, tambahkan `-p`:
 
-```bash
-/opt/lampp/bin/mysql -u root -p < database/sql/lpske.sql
+```bat
+C:\xampp\mysql\bin\mysql.exe -u root -p < database\sql\lpske.sql
 ```
 
-### Alternatif: buat manual lalu impor
+> Tip: kalau tidak mau mengetik path panjang `C:\xampp\mysql\bin\mysql.exe` berulang kali,
+> kamu bisa menambahkan `C:\xampp\mysql\bin` ke **Environment Variables → Path**, sehingga
+> cukup mengetik `mysql`.
 
-```bash
-# 1. Buat database kosong
-/opt/lampp/bin/mysql -u root -e "CREATE DATABASE IF NOT EXISTS lpske CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+### Cara B — lewat phpMyAdmin (grafis, tanpa ketik perintah)
 
-# 2. Impor data ke dalamnya
-/opt/lampp/bin/mysql -u root lpske < database/sql/lpske.sql
-```
-
-### Alternatif: lewat phpMyAdmin
-
-1. Jalankan Apache juga: `sudo /opt/lampp/lampp start`
-2. Buka `http://localhost/phpmyadmin`
-3. Buat database bernama `lpske` (collation `utf8mb4_unicode_ci`)
-4. Tab **Import** → pilih file `database/sql/lpske.sql` → **Go**
+1. Pastikan **Apache** dan **MySQL** sudah **Start** di XAMPP Control Panel.
+2. Buka browser ke **http://localhost/phpmyadmin**.
+3. Klik tab **Databases**, buat database baru bernama `lpske`
+   (collation `utf8mb4_general_ci`), lalu klik **Create**.
+   - *(Boleh dilewati — file SQL sudah memuat perintah `CREATE DATABASE` sendiri.)*
+4. Pilih database `lpske` di panel kiri → klik tab **Import**.
+5. Klik **Choose File**, pilih file `database\sql\lpske.sql`, lalu klik **Import / Go** di bawah.
 
 ---
 
 ## 3. Verifikasi
 
-```bash
-# Lihat daftar database
-/opt/lampp/bin/mysql -u root -e "SHOW DATABASES;"
+Lewat CMD:
 
-# Lihat tabel di dalam lpske
-/opt/lampp/bin/mysql -u root -e "USE lpske; SHOW TABLES;"
+```bat
+:: Lihat daftar database
+C:\xampp\mysql\bin\mysql.exe -u root -e "SHOW DATABASES;"
 
-# Cek akun yang tersedia
-/opt/lampp/bin/mysql -u root -e "SELECT id, name, email, role FROM lpske.users;"
+:: Lihat tabel di dalam lpske
+C:\xampp\mysql\bin\mysql.exe -u root -e "USE lpske; SHOW TABLES;"
+
+:: Cek akun yang tersedia
+C:\xampp\mysql\bin\mysql.exe -u root -e "SELECT id, name, email, role FROM lpske.users;"
 ```
 
-Kalau koneksi dari Laravel berhasil, perintah ini akan menampilkan status migration:
+Atau lewat phpMyAdmin: pilih database `lpske` di panel kiri dan lihat daftar tabelnya.
 
-```bash
+Kalau koneksi dari Laravel berhasil, perintah ini menampilkan status migration:
+
+```bat
 php artisan migrate:status
 ```
 
@@ -87,11 +90,11 @@ php artisan migrate:status
 
 Kalau ingin membangun struktur dari migration Laravel, bukan dari file SQL:
 
-```bash
-# Buat database kosong dulu
-/opt/lampp/bin/mysql -u root -e "CREATE DATABASE IF NOT EXISTS lpske CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+```bat
+:: Buat database kosong dulu
+C:\xampp\mysql\bin\mysql.exe -u root -e "CREATE DATABASE IF NOT EXISTS lpske CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 
-# Jalankan migration + seeder (membuat akun default)
+:: Jalankan migration + seeder (membuat akun default)
 php artisan migrate --seed
 ```
 
@@ -102,13 +105,13 @@ php artisan migrate --seed
 
 ## 5. Membuat ulang file SQL (backup / ekspor)
 
-Kalau kamu mengubah data dan ingin memperbarui file `database/sql/lpske.sql`:
+Kalau kamu mengubah data dan ingin memperbarui file `database\sql\lpske.sql`:
 
-```bash
-/opt/lampp/bin/mysqldump -u root --databases lpske \
-  --add-drop-database --default-character-set=utf8mb4 \
-  > database/sql/lpske.sql
+```bat
+C:\xampp\mysql\bin\mysqldump.exe -u root --databases lpske --add-drop-database --default-character-set=utf8mb4 > database\sql\lpske.sql
 ```
+
+Atau lewat phpMyAdmin: pilih database `lpske` → tab **Export** → **Go**.
 
 ---
 
@@ -116,8 +119,9 @@ Kalau kamu mengubah data dan ingin memperbarui file `database/sql/lpske.sql`:
 
 | Masalah | Penyebab & Solusi |
 |---|---|
-| `SQLSTATE[HY000] [2002] Connection refused` | MySQL belum jalan → `sudo /opt/lampp/lampp startmysql` |
-| `Connection refused` padahal MySQL jalan | Port di `.env` salah. Cek dengan `ss -ltnp \| grep 3306` lalu samakan `DB_PORT` |
+| `SQLSTATE[HY000] [2002]` / `Connection refused` | MySQL belum jalan → Start MySQL di XAMPP Control Panel |
+| MySQL tidak mau Start / langsung mati | Port 3306 dipakai aplikasi lain (mis. MySQL Workbench, layanan MySQL Windows). Matikan aplikasi itu, atau ganti port MySQL di XAMPP lalu samakan `DB_PORT` di `.env` |
 | `Access denied for user 'root'` | Password root salah. XAMPP default root **tanpa password** (`DB_PASSWORD=` kosong) |
 | `Unknown database 'lpske'` | Database belum diimpor → ulangi langkah 2 |
+| `'mysql' is not recognized` | Path salah. Pakai path lengkap `C:\xampp\mysql\bin\mysql.exe`, atau tambahkan folder itu ke PATH |
 | Perubahan `.env` tidak terbaca | Jalankan `php artisan config:clear` |

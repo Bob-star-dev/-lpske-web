@@ -17,7 +17,12 @@ logbook, presensi, dan perizinan.
 | Composer | 2.x | |
 | Node.js | 18+ (disarankan 20/22) | untuk Vite + Tailwind |
 | MySQL / MariaDB | 10.4+ | disediakan lewat XAMPP |
-| XAMPP for Linux | — | terpasang di `/opt/lampp` |
+| XAMPP for Windows | — | terpasang di `C:\xampp` (sudah termasuk PHP & MySQL) |
+
+> **Catatan Windows:** XAMPP sudah menyertakan **PHP** (di `C:\xampp\php`) dan **MySQL**, tapi
+> **tidak** menyertakan **Composer** dan **Node.js** — keduanya diinstall terpisah:
+> [Composer](https://getcomposer.org/download/) dan [Node.js](https://nodejs.org/).
+> Semua perintah di bawah dijalankan lewat **Command Prompt (CMD)** atau **PowerShell**.
 
 ---
 
@@ -28,15 +33,15 @@ Ikuti langkah ini **berurutan**. Semua perintah dijalankan dari dalam folder pro
 
 ### Ringkasan cepat (untuk yang sudah paham)
 
-```bash
-composer install                 # install dependency PHP
-npm install                      # install dependency JS
-cp .env.example .env             # buat file .env
-php artisan key:generate         # isi APP_KEY
-sudo /opt/lampp/lampp startmysql # nyalakan MySQL XAMPP
-/opt/lampp/bin/mysql -u root < database/sql/lpske.sql   # impor database
-php artisan storage:link         # symlink storage
-php artisan serve                # jalankan (buka http://localhost:8000)
+```bat
+composer install                 :: install dependency PHP
+npm install                      :: install dependency JS
+copy .env.example .env           :: buat file .env
+php artisan key:generate         :: isi APP_KEY
+:: nyalakan Apache + MySQL lewat XAMPP Control Panel (klik Start)
+C:\xampp\mysql\bin\mysql.exe -u root < database\sql\lpske.sql   :: impor database
+php artisan storage:link         :: symlink storage
+php artisan serve                :: jalankan (buka http://localhost:8000)
 ```
 
 Penjelasan tiap langkah ada di bawah.
@@ -56,11 +61,15 @@ npm install
 
 Ini **langkah wajib sebelum `php artisan serve`**. Project tidak menyertakan file `.env`
 (berisi konfigurasi & kunci rahasia), tapi menyertakan contohnya yaitu `.env.example`.
-Salin contoh tersebut menjadi `.env`:
+Salin contoh tersebut menjadi `.env` (lewat CMD/PowerShell):
 
-```bash
-cp .env.example .env
+```bat
+copy .env.example .env
 ```
+
+> Atau lewat File Explorer: copy-paste file `.env.example`, lalu ubah nama salinannya menjadi
+> `.env` (tanpa nama depan, hanya `.env`). Pastikan "File name extensions" aktif agar tidak
+> tersimpan sebagai `.env.txt`.
 
 ### 3. Buat APP_KEY
 
@@ -95,22 +104,22 @@ DB_PASSWORD=
 
 ### 5. Nyalakan MySQL XAMPP
 
-```bash
-sudo /opt/lampp/lampp startmysql
-```
+Buka **XAMPP Control Panel** (`C:\xampp\xampp-control.exe`), lalu klik **Start** pada baris
+**MySQL** (dan **Apache** juga kalau ingin memakai phpMyAdmin). Tombol berubah hijau = sudah jalan.
 
-Cek MySQL sudah listening dan lihat portnya (biasanya **3306**):
+Cek MySQL sudah listening dan lihat portnya (biasanya **3306**) lewat CMD:
 
-```bash
-ss -ltnp | grep 3306
+```bat
+netstat -ano | findstr 3306
 ```
 
 ### 6. Impor database
 
-Impor struktur + data awal (termasuk akun login). Detail lengkap ada di **[DATABASE.md](DATABASE.md)**.
+Impor struktur + data awal (termasuk akun login). Detail lengkap & cara lewat phpMyAdmin ada di
+**[DATABASE.md](DATABASE.md)**.
 
-```bash
-/opt/lampp/bin/mysql -u root < database/sql/lpske.sql
+```bat
+C:\xampp\mysql\bin\mysql.exe -u root < database\sql\lpske.sql
 ```
 
 ### 7. Symlink storage (agar gambar/upload tampil)
