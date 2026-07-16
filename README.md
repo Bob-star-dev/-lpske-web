@@ -160,20 +160,22 @@ login lewat halaman yang sesuai perannya** — misalnya akun anggota tidak bisa 
 walaupun email & password benar. (Logika ini ada di `app/Auth/RoleUserProvider.php`, yang
 menambahkan syarat `role` saat proses login.)
 
-| Peran | Halaman login | Email | Password |
-|---|---|---|---|
-| **Admin** | http://localhost:8000/admin | `admin@lpske.com` | `admin123` |
-| **Asisten** | http://localhost:8000/asisten | `asisten@lpske.com` | `asisten123` |
-| **Asisten** | http://localhost:8000/asisten | `Haris@gmail.com` | `Haris123` |
-| **Anggota** | http://localhost:8000/anggota | `anggota@lpske.com` | `anggota1986` |
-| **Anggota** | http://localhost:8000/anggota | `Haris2@gmail.com` | `HARIS` |
-| **Anggota** | http://localhost:8000/anggota | `katon@gmail.com` | `katon123` |
+Tiga halaman login sesuai peran:
 
-> **Catatan:** akun & password di atas berasal dari isi database `lpske` yang sudah diimpor.
-> Untuk membuat/mereset akun default lewat seeder (`admin123` / `asisten123` / `anggota123`):
+| Peran | Halaman login |
+|---|---|
+| **Admin** | http://localhost:8000/admin |
+| **Asisten** | http://localhost:8000/asisten |
+| **Anggota** | http://localhost:8000/anggota |
+
+> **Kredensial (email & password) tidak dicantumkan di sini demi keamanan** — hubungi pemilik
+> project untuk mendapatkan akun login. Akun sudah tersimpan di dalam database `lpske` yang diimpor.
+>
+> Kalau perlu membuat akun default sendiri (admin / asisten / anggota), jalankan seeder:
 > ```bash
 > php artisan db:seed --class=AdminSeeder
 > ```
+> Detail email & password default ada di file `database/seeders/AdminSeeder.php`.
 
 ---
 
